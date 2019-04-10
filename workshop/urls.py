@@ -3,6 +3,9 @@ from django.urls import path
 from workshop.core.views import home, speaker, \
     about, news, events, contact
 
+
+from workshop.subscriptions.views import subscription
+
 urlpatterns = [
 
     path('', home),
@@ -11,7 +14,7 @@ urlpatterns = [
     path('news/', news),
     path('events/', events),
     path('contact/', contact),
-
+    path('subscription/', subscription),
 
     path('admin/', admin.site.urls),
 ]
