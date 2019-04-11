@@ -1,5 +1,9 @@
-from django.http import HttpResponse
 from django.shortcuts import render
+from workshop.subscriptions.forms import SubscriptionForm
+
 
 def subscription(request):
-    return HttpResponse('formulário aqui!!!')
+
+    form = SubscriptionForm()
+
+    return render(request, 'subscriptions/subscription_form.html', {'form': form})
