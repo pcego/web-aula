@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from workshop.subscriptions.forms import SubscriptionForm
+from workshop.subscriptions.models import Subscriptions
 
 
 def subscription(request):
@@ -31,6 +32,10 @@ def create(request):
                'Confirmação de Inscrição',
                settings.DEFAULT_FROM_EMAIL,
                form.cleaned_data['email'])
+
+    # Save Subscription
+    Subscriptions.objects.create(**form.cleaned_data)
+
 
     # message feedback
     messages.success(request, 'Inscrição Realizada com Sucesso!')

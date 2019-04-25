@@ -1,6 +1,7 @@
 from django.core import mail
 from django.test import TestCase
 from workshop.subscriptions.forms import SubscriptionForm
+from workshop.subscriptions.models import Subscriptions
 
 
 class SubscriptionTest(TestCase):
@@ -78,9 +79,12 @@ class SubscriptionTestPostValid(TestCase):
         """
         self.assertEqual(1, len(mail.outbox))
 
+    def test_create_subscription(self):
+        self.assertTrue(Subscriptions.objects.exists())
+
 
 # Inicio testes POST
-class SubscribeTestPostInvalid(TestCase):
+class SubscriptionTestPostInvalid(TestCase):
 
 
     def setUp(self):
@@ -116,8 +120,10 @@ class SubscribeTestPostInvalid(TestCase):
         form = self.response.context['form']
         self.assertTrue(form.errors)
 
+    def test_dont_create_subscription(self):
+        self.assertFalse(Subscriptions.objects.exists())
 
-class SubscribeTestMailContent(TestCase):
+class SubscriptionTestMailContent(TestCase):
 
 
     def setUp(self):
@@ -165,7 +171,7 @@ class SubscribeTestMailContent(TestCase):
                 self.assertIn(text, self.email.body)
 
 
-class SubscribeSucessMessage(TestCase):
+class SubscriptionSucessMessage(TestCase):
 
 
     def setUp(self):
@@ -180,3 +186,21 @@ class SubscribeSucessMessage(TestCase):
     def test_sucess_message(self):
 
         self.assertContains(self.response, 'Inscrição Realizada com Sucesso!')
+
+
+
+class SubscriptionModelTest(TestCase):
+
+    def setUp(self):
+
+        self.obj = Subscriptions(name='Paulo',
+                                 cpf='12345678901',
+                                 email='pcego36@gmail.com',
+                                 phone='38988221794')
+
+        self.obj.save()
+
+
+    def test_create_model(self):
+
+        self.assertTrue(Subscriptions.objects.exists())
