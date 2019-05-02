@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'test_without_migrations',
     'workshop.core',
-    'workshop.subscriptions',
+    'workshop.subscriptions.apps.SubscriptionsConfig',
 ]
 
 MIDDLEWARE = [
