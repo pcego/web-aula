@@ -26,21 +26,21 @@ def create(request):
                       'subscriptions/subscription_form.html',
                       {'form': form})
 
+    # Save Subscription
+    subscription = Subscriptions.objects.create(**form.cleaned_data)
+
     # send email
     _send_mail('subscriptions/subscription_email.txt',
-               form.cleaned_data,
+               {'subscription':subscription},
                'Confirmação de Inscrição',
                settings.DEFAULT_FROM_EMAIL,
-               form.cleaned_data['email'])
-
-    # Save Subscription
-    Subscriptions.objects.create(**form.cleaned_data)
+               subscription.email)
 
 
     # message feedback
     messages.success(request, 'Inscrição Realizada com Sucesso!')
 
-    return HttpResponseRedirect('/subscription/')
+    return HttpResponseRedirect('/subscription/{}/'.format(subscription.pk))
 
 
 def new(request):
@@ -48,6 +48,13 @@ def new(request):
     return render(request,
                   'subscriptions/subscription_form.html',
                   {'form':SubscriptionForm()})
+
+
+def detail(request, pk):
+
+    subscription = Subscriptions.objects.get(pk=pk)
+    return render(request, 'subscriptions/subscription_detail.html',
+                  {'subscription': subscription})
 
 
 def _send_mail(template_name, context, subject,from_, to):
