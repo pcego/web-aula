@@ -27,7 +27,8 @@ def create(request):
                       {'form': form})
 
     # Save Subscription
-    subscription = Subscriptions.objects.create(**form.cleaned_data)
+    #subscription = Subscriptions.objects.create(**form.cleaned_data)
+    subscription = form.save()
 
     # send email
     _send_mail('subscriptions/subscription_email.txt',
