@@ -40,7 +40,7 @@ def create(request):
     # message feedback
     messages.success(request, 'Inscrição Realizada com Sucesso!')
 
-    return HttpResponseRedirect('/subscription/{}/'.format(subscription.pk))
+    return HttpResponseRedirect('/subscription/{}/'.format(subscription.uuid))
 
 
 def new(request):
@@ -50,9 +50,10 @@ def new(request):
                   {'form':SubscriptionForm()})
 
 
-def detail(request, pk):
+def detail(request, uuid):
 
-    subscription = Subscriptions.objects.get(pk=pk)
+    subscription = Subscriptions.objects.get(uuid=uuid)
+
     return render(request, 'subscriptions/subscription_detail.html',
                   {'subscription': subscription})
 

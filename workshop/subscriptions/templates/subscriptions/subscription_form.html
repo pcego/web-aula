@@ -194,6 +194,7 @@
 					{% endif %}
 					<form action="." class="contact_form" id="contact_form" method="post">
 						{% csrf_token %}
+						{{form.non_field_errors}}
 						{{form.name.errors}}
 						{{form.name}}
 						{{form.cpf.errors}}

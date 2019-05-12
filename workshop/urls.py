@@ -15,7 +15,7 @@ urlpatterns = [
     path('events/', events),
     path('contact/', contact),
     path('subscription/', subscription),
-    path('subscription/<int:pk>/', detail),
+    path('subscription/<str:uuid>/', detail),
 
     path('admin/', admin.site.urls),
 ]
