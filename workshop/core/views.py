@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from workshop.core.models import Speaker
 
 
 def home(request):
@@ -6,7 +7,10 @@ def home(request):
 
 
 def speaker(request):
-    return render(request, 'core/speakers.html')
+
+    speakers = Speaker.objects.all()
+
+    return render(request, 'core/speakers.html', {'speakers': speakers})
 
 
 def about(request):

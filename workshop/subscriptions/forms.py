@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 from django.forms import TextInput
 from workshop.subscriptions.models import Subscriptions
 
-#from workshop.subscriptions.validators import validate_cpf
+from workshop.subscriptions.validators import validate_cpf
 
 
 # class SubscriptionForm(forms.Form):
