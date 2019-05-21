@@ -185,7 +185,7 @@
             <div class="intro_item">
                 <div class="intro_image"><img src="{% static 'images/intro_1.jpg' %}" alt=""></div>
                 <div class="intro_body">
-                    <div class="intro_title"><a href="#">Programação</a></div>
+                    <div class="intro_title"><a href="#programation">Programação</a></div>
                     <div class="intro_subtitle">Donec quis metus ac arcu luctus accumsan.</div>
                 </div>
             </div>
@@ -295,7 +295,7 @@
 
     <!-- Calendar -->
 
-    <div class="calendar">
+    <div id="programation" class="calendar">
         <div class="container reset_container">
             <div class="row">
                 <div class="col-xl-6 calendar_col">
@@ -314,66 +314,18 @@
                                     <div class="calendar_item_image"><img src="{% static 'images/event_1.jpg' %}"
                                                                           alt=""></div>
                                 </div>
+                                {% for talk in day_one %}
                                 <div class="calendar_item_time">
-                                    <div>14:00</div>
-                                    <div>Auditorium</div>
+                                    <div>{{ talk.start }}</div>
+                                    <div>{{ talk.local }}</div>
                                 </div>
                                 <div class="calendar_item_text">
-                                    <div>Business 101</div>
-                                    <div>08 AM - 04 PM</div>
-                                    <div>Speaker: Daniel Hill</div>
+                                    <div>Tema: {{ talk.title }}</div>
+                                    {% for speaker in talk.speakers.all %}
+                                    <div>Palestrante: {{ speaker.name }}</div>
+                                    {% endfor %}
                                 </div>
-                            </div>
-
-                            <!-- Calendar Item -->
-                            <div class="calendar_item d-flex flex-row align-items-center justify-content-start">
-                                <div>
-                                    <div class="calendar_item_image"><img src="{% static 'images/event_2.jpg' %}"
-                                                                          alt=""></div>
-                                </div>
-                                <div class="calendar_item_time">
-                                    <div>15:00</div>
-                                    <div>Auditorium</div>
-                                </div>
-                                <div class="calendar_item_text">
-                                    <div>About technology</div>
-                                    <div>08 AM - 04 PM</div>
-                                    <div>Speaker: Daniel Hill</div>
-                                </div>
-                            </div>
-
-                            <!-- Calendar Item -->
-                            <div class="calendar_item d-flex flex-row align-items-center justify-content-start">
-                                <div>
-                                    <div class="calendar_item_image"><img src="{% static 'images/event_3.jpg' %}"
-                                                                          alt=""></div>
-                                </div>
-                                <div class="calendar_item_time">
-                                    <div>17:00</div>
-                                    <div>Auditorium</div>
-                                </div>
-                                <div class="calendar_item_text">
-                                    <div>Conference calls</div>
-                                    <div>08 AM - 04 PM</div>
-                                    <div>Speaker: Daniel Hill</div>
-                                </div>
-                            </div>
-
-                            <!-- Calendar Item -->
-                            <div class="calendar_item d-flex flex-row align-items-center justify-content-start">
-                                <div>
-                                    <div class="calendar_item_image"><img src="{% static 'images/event_4.jpg' %}"
-                                                                          alt=""></div>
-                                </div>
-                                <div class="calendar_item_time">
-                                    <div>20:00</div>
-                                    <div>Auditorium</div>
-                                </div>
-                                <div class="calendar_item_text">
-                                    <div>Drinks and dinner</div>
-                                    <div>08 AM - 04 PM</div>
-                                    <div>Speaker: Daniel Hill</div>
-                                </div>
+                                {% endfor %}
                             </div>
 
                         </div>

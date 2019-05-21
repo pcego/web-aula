@@ -1,9 +1,14 @@
 from django.shortcuts import render
-from workshop.core.models import Speaker
+from workshop.core.models import Speaker, Talk
 
 
 def home(request):
-    return render(request, 'core/index.html')
+
+    context = {
+        'day_one': Talk.objects.filter(start__lt='12:00'),
+        'day_two':Talk.objects.filter(start__gte='12:00')
+    }
+    return render(request, 'core/index.html', context)
 
 
 def speaker(request):

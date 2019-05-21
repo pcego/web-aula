@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from workshop.core.models import Speaker, Contact
+from workshop.core.models import Speaker, Contact, Talk
 
 
 class ContactInline(admin.TabularInline):
@@ -33,3 +33,4 @@ class SpeakerModelAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Speaker, SpeakerModelAdmin)
+admin.site.register(Talk)
