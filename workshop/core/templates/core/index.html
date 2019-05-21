@@ -304,17 +304,17 @@
                             <div>
                                 <div class="calendar_icon"><img src="{% static 'images/calendar.svg' %}" alt=""></div>
                             </div>
-                            <div class="calendar_title">22 agosto calendário dos eventos</div>
+                            <div class="calendar_title">12 Junho calendário dos eventos</div>
                         </div>
                         <div class="calendar_items">
 
                             <!-- Calendar Item -->
+                            {% for talk in day_one %}
                             <div class="calendar_item d-flex flex-row align-items-center justify-content-start">
                                 <div>
                                     <div class="calendar_item_image"><img src="{% static 'images/event_1.jpg' %}"
                                                                           alt=""></div>
                                 </div>
-                                {% for talk in day_one %}
                                 <div class="calendar_item_time">
                                     <div>{{ talk.start }}</div>
                                     <div>{{ talk.local }}</div>
@@ -325,9 +325,9 @@
                                     <div>Palestrante: {{ speaker.name }}</div>
                                     {% endfor %}
                                 </div>
-                                {% endfor %}
-                            </div>
 
+                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
