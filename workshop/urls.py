@@ -8,9 +8,9 @@ from workshop.subscriptions.views import subscription, detail
 
 urlpatterns = [
 
-    path('', home),
+    path('', home, name='home'),
     path('speakers/', speaker),
-    path('about/', about),
+    path('about/', about, name='about'),
     path('news/', news),
     path('events/', events),
     path('contact/', contact),

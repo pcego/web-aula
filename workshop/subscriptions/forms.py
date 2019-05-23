@@ -1,6 +1,6 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from django.forms import TextInput
+from django.forms import TextInput, EmailInput
 from workshop.subscriptions.models import Subscriptions
 
 from workshop.subscriptions.validators import validate_cpf
@@ -45,7 +45,7 @@ class SubscriptionForm(forms.ModelForm):
         fields = ['name', 'cpf', 'email', 'phone']
         widgets= {'name':TextInput(attrs={'class': 'contact_input', 'placeholder': 'Nome'}),
                   'cpf':TextInput(attrs={'class': 'contact_input', 'placeholder': 'CPF'}),
-                  'email':TextInput(attrs={'class': 'contact_input', 'placeholder': 'E-Mail'}),
+                  'email':EmailInput(attrs={'class': 'contact_input', 'placeholder': 'E-Mail'}),
                   'phone':TextInput(attrs={'class': 'contact_input', 'placeholder': 'Telefone'})}
 
 

@@ -38,9 +38,6 @@ def create(request):
                subscription.email)
 
 
-    # message feedback
-    messages.success(request, 'Inscrição Realizada com Sucesso!')
-
     return HttpResponseRedirect('/subscription/{}/'.format(subscription.uuid))
 
 

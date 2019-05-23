@@ -30,7 +30,8 @@ class Contact(models.Model):
     KINDS = ((EMAIL, 'Email'),
              (TELEFONE, 'Telefone'),)
 
-    speaker = models.ForeignKey('Speaker', on_delete=models.CASCADE, verbose_name='palestrante')
+    speaker = models.ForeignKey('Speaker', on_delete=models.CASCADE,
+                                verbose_name='palestrante')
     kind = models.CharField('tipo', max_length=1, choices=KINDS)
     value = models.CharField('valor', max_length=255)
 
@@ -53,7 +54,9 @@ class Talk(models.Model):
     date = models.DateField('data')
     start = models.TimeField('início', blank=True, null=True)
     description = models.TextField('descrição', blank=True)
-    speakers = models.ManyToManyField('Speaker', verbose_name='palestrantes', blank=True)
+    speakers = models.ManyToManyField('Speaker',
+                                      verbose_name='palestrantes',
+                                      blank=True)
 
 
     class Meta:
